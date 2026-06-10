@@ -4,6 +4,7 @@ FROM php:8.2-apache
 RUN apt-get update && apt-get install -y \
     libpq-dev \
     libonig-dev \
+    libzip-dev \
     zip \
     unzip \
     git \
@@ -13,6 +14,7 @@ RUN apt-get update && apt-get install -y \
     pdo_pgsql \
     mbstring \
     bcmath \
+    zip \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
 
@@ -33,16 +35,25 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 # Set working directory
 WORKDIR /var/www/html
 
-# Copy app files
+# Copy app files (kecuali .dockerignore, vendor, node_modules)
 COPY . .
+
+# Buat storage structure lengkap + set permission sebelum composer
+RUN mkdir -p \
+    storage/framework/cache/data \
+    storage/framework/sessions \
+    storage/framework/testing \
+    storage/framework/views \
+    storage/logs \
+    bootstrap/cache \
+  && chown -R www-data:www-data storage bootstrap/cache \
+  && chmod -R 775 storage bootstrap/cache
 
 # Install PHP dependencies
 RUN composer install --no-dev --optimize-autoloader --no-interaction
 
-# Set permissions — buat dulu direktori biar gak error kalau kosong
-RUN mkdir -p storage bootstrap/cache \
-  && chown -R www-data:www-data storage bootstrap/cache \
-  && chmod -R 775 storage bootstrap/cache
+# Optimasi Laravel
+RUN php artisan optimize && php artisan event:cache
 
 # Expose port
 EXPOSE 80
