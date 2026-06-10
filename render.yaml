@@ -1,0 +1,49 @@
+services:
+  - type: web
+    name: arfan-barbershop-api
+    runtime: php
+    rootDir: laravel
+    region: singapore
+    plan: free
+    buildCommand: |-
+      composer install --no-dev --optimize-autoloader &&
+      php artisan optimize &&
+      php artisan event:cache
+    startCommand: bash start.sh
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: APP_DEBUG
+        value: "false"
+      - key: APP_KEY
+        sync: false
+      - key: APP_NAME
+        value: Arfan Barbershop
+      - key: APP_URL
+        value: https://arfan-barbershop-api.onrender.com
+      - key: DB_CONNECTION
+        value: pgsql
+      - key: DB_HOST
+        sync: false
+      - key: DB_PORT
+        value: "5432"
+      - key: DB_DATABASE
+        sync: false
+      - key: DB_USERNAME
+        sync: false
+      - key: DB_PASSWORD
+        sync: false
+      - key: DB_SSLMODE
+        value: require
+      - key: DB_DSN_OPTIONS
+        sync: false
+      - key: MIDTRANS_SERVER_KEY
+        sync: false
+      - key: MIDTRANS_CLIENT_KEY
+        sync: false
+      - key: MIDTRANS_IS_PRODUCTION
+        value: "false"
+      - key: MIDTRANS_IS_SANITIZED
+        value: "true"
+      - key: MIDTRANS_IS_3DS
+        value: "true"
