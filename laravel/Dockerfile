@@ -52,9 +52,6 @@ RUN mkdir -p \
 # Install PHP dependencies
 RUN composer install --no-dev --optimize-autoloader --no-interaction
 
-# Optimasi Laravel
-RUN php artisan optimize && php artisan event:cache
-
 # Expose port
 EXPOSE 80
 
