@@ -1,0 +1,55 @@
+name: arfan_barbershop
+description: Arfan Barbershop - Online Booking App
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  
+  # UI & Font
+  google_fonts: ^6.1.0
+
+  # State Management
+  provider: ^6.1.5
+
+  # HTTP Client
+  dio: ^5.4.0
+
+  # Simpan token dengan aman
+  flutter_secure_storage: ^10.2.0
+  shared_preferences: ^2.2.2
+
+  # Cached Network Image
+  cached_network_image: ^3.3.1
+
+  # Midtrans - buka WebView
+  webview_flutter: ^4.4.2
+  url_launcher: ^6.2.2
+
+  # Format tanggal
+  intl: ^0.20.1
+
+  # Ekspor laporan PDF/CSV
+  pdf: ^3.11.1
+  path_provider: ^2.1.5
+  share_plus: ^10.1.4
+
+  # Toast notifikasi
+  fluttertoast: ^8.2.4
+
+  # Deteksi koneksi internet
+  connectivity_plus: ^6.1.4
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+
+flutter:
+  uses-material-design: true
+  # assets:
+  #   - assets/images/

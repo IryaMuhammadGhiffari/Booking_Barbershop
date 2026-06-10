@@ -1,25 +1,52 @@
-/vendor/
-/node_modules/
-/npm-debug.log
-/yarn-error.log
-/.env
-/.env.backup
-/.env.production
-/.phpunit.result.cache
-/coverage/
-/storage/*.key
-/storage/app/private/
-storage/framework/cache/*
-storage/framework/sessions/*
-storage/framework/testing/*
-storage/framework/views/*
-/public/hot
-/public/storage
-/public/build
-/.idea/
-.vscode/
+# Miscellaneous
+*.class
 *.log
-*.sqlite
-*.sqlite3
+*.pyc
+*.swp
 .DS_Store
-Thumbs.db
+.atom/
+.build/
+.buildlog/
+.history
+.svn/
+.swiftpm/
+migrate_working_dir/
+
+# IntelliJ related
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# The .vscode folder contains launch configuration and tasks you configure in
+# VS Code which you may wish to be included in version control, so this line
+# is commented out by default.
+#.vscode/
+
+# Flutter/Dart/Pub related
+**/doc/api/
+**/ios/Flutter/.last_build_id
+.dart_tool/
+.flutter-plugins-dependencies
+.pub-cache/
+.pub/
+/build/
+/coverage/
+
+# Symbolication related
+app.*.symbols
+
+# Obfuscation related
+app.*.map.json
+
+# Android Studio will place build artifacts here
+/android/app/debug
+/android/app/profile
+/android/app/release
+
+# Laravel vendor (ada di laravel/vendor)
+/vendor/
+laravel/vendor/
+laravel/node_modules/
+laravel/storage/framework/views/*.php
+laravel/storage/logs/*.log
