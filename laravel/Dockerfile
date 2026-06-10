@@ -55,6 +55,5 @@ RUN composer install --no-dev --optimize-autoloader --no-interaction
 # Expose port
 EXPOSE 80
 
-# Entrypoint: generate key + migrate + start Apache
-RUN chmod +x docker-entrypoint.sh
-ENTRYPOINT ["./docker-entrypoint.sh"]
+# Start Apache langsung — migrasi jalan via Render Dashboard manual
+CMD ["apache2-foreground"]
